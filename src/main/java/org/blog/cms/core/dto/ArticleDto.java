@@ -5,4 +5,6 @@ import java.util.List;
 
 public record ArticleDto(
         int id, List<ElementDto> elements, LocalDate creationDate
-        ) {}
+) {
+}
+

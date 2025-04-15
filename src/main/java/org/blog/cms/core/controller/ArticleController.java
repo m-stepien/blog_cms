@@ -17,12 +17,8 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ArticleDto> getArticle(@RequestParam("id") long id) {
+    public ResponseEntity<ArticleDto> getArticle(@RequestParam("id") int id) {
         ArticleDto article = this.articleService.getArticleById(id);
         return ResponseEntity.ok(article);
-    }
-
-    @PostMapping("/new")
-    public ResponseEntity<String> createNewArticle(@RequestBody ArticleDto newArticle){
     }
 }
