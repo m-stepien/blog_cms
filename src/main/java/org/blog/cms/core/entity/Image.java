@@ -8,6 +8,16 @@ public class Image extends Element {
     private String altText;
     private String caption;
 
+    public Image() {
+    }
+
+    public Image(ElementType elementType, String url, String altText, String caption) {
+        super(elementType);
+        this.url = url;
+        this.altText = altText;
+        this.caption = caption;
+    }
+
     public String getUrl() {
         return url;
     }

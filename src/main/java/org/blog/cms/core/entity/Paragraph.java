@@ -8,6 +8,14 @@ import java.util.List;
 public class Paragraph extends Element{
     private List<Subtext> content;
 
+    public Paragraph() {
+    }
+
+    public Paragraph(ElementType type, List<Subtext> content) {
+        super(type);
+        this.content = content;
+    }
+
     public List<Subtext> getContent() {
         return content;
     }

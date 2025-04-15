@@ -7,6 +7,15 @@ public class Header extends Element{
     private int level;
     private String text;
 
+    public Header() {
+    }
+
+    public Header(ElementType elementType, int level, String text) {
+        super(elementType);
+        this.level = level;
+        this.text = text;
+    }
+
     public int getLevel() {
         return level;
     }

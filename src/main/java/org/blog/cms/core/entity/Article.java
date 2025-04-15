@@ -2,6 +2,7 @@ package org.blog.cms.core.entity;
 
 import org.blog.cms.core.dto.ArticleDto;
 import org.blog.cms.core.dto.ElementDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,25 +12,34 @@ import java.util.List;
 @Document(collection = "article")
 public class Article {
     @Id
-    int id;
-    String header;
+    String id;
+    String title;
     List<Element> elements;
     LocalDate creationDate;
 
-    public int getId() {
+    public Article(){
+    }
+
+    public Article(ArticleDto articleDto){
+        this.title = articleDto.title();
+        this.creationDate = articleDto.creationDate();
+        this.elements = articleDto.elements().stream().map(ElementDto::toElement).toList();
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getHeader() {
-        return header;
+    public String getTitle() {
+        return title;
     }
 
-    public void setHeader(String header) {
-        this.header = header;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<Element> getElements() {
@@ -53,6 +63,6 @@ public class Article {
     }
 
     public ArticleDto toDto(){
-        return new ArticleDto(this.getId(), this.elementDtos(), this.getCreationDate());
+        return new ArticleDto(this.getId(),this.getTitle(), this.elementDtos(), this.getCreationDate());
     }
 }

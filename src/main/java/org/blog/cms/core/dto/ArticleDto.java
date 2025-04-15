@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record ArticleDto(
-        int id, List<ElementDto> elements, LocalDate creationDate
+        String id, String title, List<ElementDto> elements, LocalDate creationDate
 ) {
 }
 
